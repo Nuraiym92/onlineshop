@@ -6,15 +6,11 @@ const ProductScreen=(props, handleClick)=> {
 
   return (
     <div>
-   
-      {/* <div className='back-to-result'>
-              <Link to= "/girls/girlsdress">Back to result</Link>
-            </div> */}
-      <div className="details">
-        <div className="details-image">
-          <img src={item.image} alt="item" />
-        </div>
-        <div className="details-info">
+     <div className="product-details">
+        <div className="product-details-image">
+          <img className="product-details-img" src={item.image} alt="item" />
+            </div>
+             <div className="product-details-info">
           <ul>
             <li>
               <h4> {item.name} </h4>
@@ -28,9 +24,15 @@ const ProductScreen=(props, handleClick)=> {
               </b>
             </li>
             <li>
-              <div> Description: {item.description} </div>
+              <div>
+                <b>Description:</b>  
+               {item.description} </div>
             </li>
+           
+
           </ul>
+          <button className="btn" onClick={() => handleClick(item)}> Add to Cart </button>
+
         </div>
     
       </div>

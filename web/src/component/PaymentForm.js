@@ -36,7 +36,7 @@ export default function PaymentForm() {
             card: elements.getElement(CardElement)
         })
 
-       
+
     if(!error) {
         try {
             const {id} = paymentMethod
@@ -46,23 +46,18 @@ export default function PaymentForm() {
             })
 
             if(response.data.success) {
-           return (
-               <h3>Successful payment</h3>
-           )
+                console.log("Successful payment")
                 setSuccess(true)
             }
 
         } catch (error) {
-           return(
-               <h3>Error</h3>
-           ) 
+            console.log("Error", error)
         }
     } else {
-       return(
-           <h3>{error.message}</h3>
-       )
+        console.log(error.message)
     }
 }
+
 
     return (
         <>

@@ -8,6 +8,8 @@ import SignIn from "./component/SignIn"
 import Order from "./component/Order";
 
 import Payment from "./component/Payment";
+import Card from "./component/Card";
+
 
 
 const App = () => {
@@ -32,11 +34,7 @@ const App = () => {
  
   
 
- 
-
-  
-
-  const handleClick = (item) => {
+const handleClick = (item) => {
     if (cart.indexOf(item) !== -1) return;
     setCart([...cart, item]);
   };
@@ -53,7 +51,9 @@ const App = () => {
   };
 
   return (
-    <React.Fragment>
+   
+<React.Fragment>
+   <div className="app">
       <BrowserRouter>
         <Navbar 
                size={cart.length} />
@@ -63,22 +63,26 @@ const App = () => {
             component={() => <Products handleClick={handleClick} />}
           />
       <Route path="/cart">
-         <Cart cart={cart} setCart={setCart} handleChange={handleChange} handleRemove={handleRemove} handlePrice={handlePrice} price={price}/>
+         <Cart cart={cart} setCart={setCart} handleClick={handleClick} handleChange={handleChange} handleRemove={handleRemove} handlePrice={handlePrice} price={price}/>
 
       </Route>
          
      
        
-        <Route path="/item/:id" exact="true" component={ProductScreen} />
-        <Route path="/productScreen" exact="true" handleClick={handleClick} component={ProductScreen} />
+        <Route path="/item/:id" handleClick={handleClick} component={ProductScreen} />
+   
+       
         <Route path="/signin" exact="true" component={SignIn} />
         <Route path="/order" exact="true" component={Order} />
         <Route path="/payment" exact="true"  >
           <Payment price={price} />
         </Route>
-      
-      </BrowserRouter>{" "}
-    </React.Fragment>
+     
+      </BrowserRouter>
+   </div>  
+  
+     </React.Fragment>
+   
   );
 };
 

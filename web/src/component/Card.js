@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Card({ item, handleClick }) {
-  const { id, name, image, price } = item;
+  const { id, name, image, price,description } = item;
  
   return (
     <div className="cards">
@@ -10,14 +10,12 @@ function Card({ item, handleClick }) {
         <Link to={"/item/" + item._id}>
           <img src={image} alt="" />
         </Link>
-        
-        <i class="fa-light fa-heart-half-stroke"></i>
-      
+       
       
       </div>
       <div className="details">
         <Link to={"/item/" + item._id}>
-          
+        
           <p> {name} </p>
         </Link>
         <p>
