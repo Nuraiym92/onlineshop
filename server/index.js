@@ -1,5 +1,7 @@
 const express = require("express")
+const path=require('path')
 const app = express()
+app.use(express.static(path.join(__dirname +"/public")))
 require("dotenv").config()
 const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST)
 const bodyParser = require("body-parser")
@@ -33,7 +35,6 @@ app.post("/payment", cors(), async (req, res) => {
 		})
 	}
 })
-
 app.listen(process.env.PORT || 4000, () => {
 	console.log("Sever is listening on port 4000")
 })
